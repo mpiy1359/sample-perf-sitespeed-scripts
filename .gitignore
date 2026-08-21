@@ -1,0 +1,30 @@
+# .gitignore
+#
+# Excludes files and directories that should NOT be committed to version control.
+
+# ── Node.js dependencies ──────────────────────────────────────────────
+node_modules/
+
+# ── sitespeed.io output ───────────────────────────────────────────────
+# Generated HTML reports, screenshots, HAR files, and JSON dumps are
+# large binary/data artifacts. Store them externally (e.g. S3, GCS) or
+# in a dedicated artifact store rather than in the repository.
+results/
+
+# ── OS / editor artefacts ─────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# ── Environment variables ─────────────────────────────────────────────
+# Never commit secrets or environment-specific config.
+.env
+.env.*
+!.env.example
+
+# ── Logs ──────────────────────────────────────────────────────────────
+*.log
+npm-debug.log*

@@ -1,0 +1,18 @@
+{
+  "_comment": "Performance budget thresholds. If any metric exceeds these values the run is marked as failed.",
+  "browsertime": {
+    "firstPaint": 2000,
+    "firstContentfulPaint": 2500,
+    "largestContentfulPaint": 3500,
+    "timeToInteractive": 4000,
+    "totalBlockingTime": 300,
+    "cumulativeLayoutShift": 0.1
+  },
+  "pagexray": {
+    "transferSize": 2000000,
+    "requests": 100
+  },
+  "coach": {
+    "score": 75
+  }
+}

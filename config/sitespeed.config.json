@@ -1,0 +1,41 @@
+{
+  "_comment": "Main sitespeed.io configuration file. All CLI options can be expressed here as JSON keys.",
+
+  "urls": [
+    "https://www.sitespeed.io/"
+  ],
+
+  "browsertime": {
+    "_comment": "browsertime controls the browser-level capture settings.",
+    "iterations": 3,
+    "browser": "chrome",
+    "headless": true,
+    "viewPort": "1280x800",
+    "pageCompleteCheck": "return window.performance.timing.loadEventEnd > 0",
+    "chrome": {
+      "args": [
+        "--no-sandbox",
+        "--disable-dev-shm-usage"
+      ]
+    }
+  },
+
+  "plugins": {
+    "_comment": "List of sitespeed.io plugins to activate. coach = best-practice advice, pagexray = request/asset analysis.",
+    "add": ["coach", "pagexray"]
+  },
+
+  "budget": {
+    "_comment": "Performance budget file. Tests will fail if thresholds are exceeded.",
+    "configPath": "./config/budget.json"
+  },
+
+  "outputFolder": "./results/latest",
+
+  "html": {
+    "_comment": "Generate an HTML report in the output folder.",
+    "showAllWaterfallSummary": true
+  },
+
+  "verbose": 0
+}

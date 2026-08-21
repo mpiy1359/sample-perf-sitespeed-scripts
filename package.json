@@ -1,0 +1,36 @@
+{
+  "name": "sample-perf-sitespeed-scripts",
+  "version": "1.0.0",
+  "description": "Enterprise-ready performance test project using sitespeed.io",
+  "main": "index.js",
+  "scripts": {
+    "test": "node tests/logger.test.js && node tests/budget-checker.test.js",
+    "perf:run": "sitespeed.io --config ./config/sitespeed.config.json",
+    "perf:run:ci": "sitespeed.io --config ./config/sitespeed.config.json --outputFolder ./results/ci",
+    "perf:run:desktop": "sitespeed.io --config ./config/sitespeed.config.json --browsertime.viewPort 1920x1080",
+    "perf:run:mobile": "sitespeed.io --config ./config/sitespeed.config.json --browsertime.viewPort 360x640 --browsertime.mobile true",
+    "perf:run:scripted": "sitespeed.io --config ./config/sitespeed.config.json --browsertime.script ./scripts/user-journey.js",
+    "lint": "eslint scripts/ utils/ --ext .js"
+  },
+  "keywords": [
+    "performance",
+    "sitespeed.io",
+    "web-performance",
+    "testing",
+    "automation"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "eslint": "^9.0.0",
+    "globals": "^16.0.0"
+  },
+  "dependencies": {
+    "sitespeed.io": "^42.6.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}
