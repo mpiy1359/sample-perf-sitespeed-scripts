@@ -2,7 +2,7 @@
   "name": "sample-perf-sitespeed-scripts",
   "version": "1.0.0",
   "description": "Enterprise-ready performance test project using sitespeed.io",
-  "main": "index.js",
+  "main": "utils/logger.js",
   "scripts": {
     "test": "node tests/logger.test.js && node tests/budget-checker.test.js",
     "perf:run": "sitespeed.io --config ./config/sitespeed.config.json",
