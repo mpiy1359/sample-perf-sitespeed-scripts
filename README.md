@@ -93,7 +93,7 @@ sample-perf-sitespeed-scripts/
 │
 ├── .env.example                 # Template for environment variables
 ├── .gitignore
-├── eslint.config.js             # ESLint flat-config (v9+)
+├── eslint.config.cjs            # ESLint flat-config (v9+)
 └── package.json
 ```
 
