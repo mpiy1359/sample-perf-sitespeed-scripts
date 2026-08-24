@@ -9,11 +9,6 @@ on:
   pull_request:
     branches: [main]
   workflow_dispatch:
-    inputs:
-      url:
-        description: 'Target URL (defaults to https://www.sitespeed.io/)'
-        required: false
-        default: 'https://www.sitespeed.io/'
 
 # ── Concurrency ───────────────────────────────────────────────────────────────
 # Only one performance run per branch at a time to avoid skewed results.
