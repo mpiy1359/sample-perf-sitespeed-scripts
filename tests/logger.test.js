@@ -33,8 +33,11 @@ function capture(stream, fn) {
   const chunks = [];
   const original = process[stream].write.bind(process[stream]);
   process[stream].write = (chunk) => { chunks.push(chunk); return true; };
-  fn();
-  process[stream].write = original;
+  try {
+    fn();
+  } finally {
+    process[stream].write = original;
+  }
   return chunks.join('');
 }
 
