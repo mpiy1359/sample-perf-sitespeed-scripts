@@ -1,0 +1,87 @@
+name: Performance Tests
+
+# ── Trigger ──────────────────────────────────────────────────────────────────
+# Run on every push to main and on pull requests targeting main.
+# Also allows manual runs via the GitHub Actions UI.
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+# ── Concurrency ───────────────────────────────────────────────────────────────
+# Only one performance run per branch at a time to avoid skewed results.
+concurrency:
+  group: perf-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # ── Unit tests ─────────────────────────────────────────────────────────────
+  unit-tests:
+    name: Unit Tests
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run unit tests
+        run: |
+          node tests/logger.test.js
+          node tests/budget-checker.test.js
+
+  # ── Performance tests ──────────────────────────────────────────────────────
+  performance:
+    name: sitespeed.io Performance Run
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    # Performance tests are only run on pushes to main (not on every PR) to
+    # avoid excessive network calls during code review.
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Chrome dependencies
+        # sitespeed.io drives Chrome; ensure all required system libs are present.
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends \
+            libnss3 libatk1.0-0 libatk-bridge2.0-0 libcups2 \
+            libdrm2 libxkbcommon0 libxcomposite1 libxdamage1 \
+            libxfixes3 libxrandr2 libgbm1 libasound2
+
+      - name: Run performance tests
+        run: npm run perf:run:ci
+        env:
+          LOG_LEVEL: info
+
+      - name: Upload performance results
+        # Always upload results so engineers can inspect them even on failure.
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sitespeed-results-${{ github.run_number }}
+          path: results/ci/
+          retention-days: 30
