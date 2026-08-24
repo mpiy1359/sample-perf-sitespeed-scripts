@@ -38,6 +38,7 @@ function loadBudget() {
   // Remove comment keys (those starting with "_") after parsing to avoid
   // fragile regex manipulation of the raw JSON string.
   function stripCommentKeys(obj) {
+    if (Array.isArray(obj)) return obj.map(stripCommentKeys);
     if (typeof obj !== 'object' || obj === null) return obj;
     const result = {};
     for (const [k, v] of Object.entries(obj)) {
