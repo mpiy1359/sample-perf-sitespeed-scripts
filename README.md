@@ -56,7 +56,7 @@ npm install
 cp .env.example .env
 
 # 4. Run the default performance test
-npm test
+npm run perf:run
 ```
 
 HTML results are written to `./results/latest/`.
