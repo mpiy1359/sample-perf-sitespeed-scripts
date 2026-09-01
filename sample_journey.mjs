@@ -32,3 +32,5 @@ export default async function (context, commands) {
     throw e; [11]
   }
 }
+
+// EXECUTION COMMAND: npx sitespeed.io.cmd sample_journey.mjs -b chrome -n 3
