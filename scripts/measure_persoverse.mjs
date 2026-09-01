@@ -8,3 +8,4 @@ export default async function (context, commands) {
 }
 
 // https://persoverse-portal-qa.cloud.sysco.net/sign-in?reset=true
+// EXECUTION COMMAND: npx sitespeed.io.cmd -n 1 --multi measure_persoverse.mjs
