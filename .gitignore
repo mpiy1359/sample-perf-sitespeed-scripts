@@ -2,5 +2,6 @@
 /shelf/
 /workspace.xml
 .idea/
-/scripts/sitespeed-result/
 /node_modules/
+/scripts/sitespeed-result/
+/scripts/browsertime-results/
