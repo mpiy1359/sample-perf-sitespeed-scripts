@@ -77,7 +77,7 @@ sitespeed.io.cmd sample_journey.mjs -b chrome -n 3
 Alternatively, bypass Windows PATH resolution issues with:
 
 ```bash
-npx sitespeed.io sample_journey.mjs -b chrome -n 3
+npx sitespeed.io.cmd sample_journey.mjs -b chrome -n 3
 ```
 
 ### Issue 2: Results are not appearing
