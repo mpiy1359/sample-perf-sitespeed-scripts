@@ -8,3 +8,6 @@ export default async function (context, commands) {
 }
 
 // EXECUTION COMMAND: npx sitespeed.io.cmd -n 1 --multi navigate_measure.mjs
+// npx browsertime navigate_measure.mjs
+
+// npx sitespeed.io.cmd measure.mjs navigate_measure.mjs
