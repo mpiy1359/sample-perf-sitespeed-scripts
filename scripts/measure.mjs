@@ -11,7 +11,6 @@ export default async function (context, commands) {
 // EXECUTION COMMAND: npx sitespeed.io.cmd -n 1 --multi measure.mjs
 
 /**
- *
  * C:\git_repos\sample-perf-sitespeed-scripts\scripts>npx sitespeed.io.cmd -n 1 --multi measure.mjs
  * [2026-09-01 05:29:50] INFO: Versions OS: win32 10.0.20348 nodejs: v24.20.0 sitespeed.io: 42.6.0 browsertime: 28.3.0 coach: 9.2.1
  * [2026-09-01 05:29:51] INFO: Running tests using Chrome - 1 iteration(s)
